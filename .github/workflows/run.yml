@@ -14,12 +14,5 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    # - name: install requirements
-    #   run: |
-    #     python --version
-    #     pip install --upgrade pip
-    #     pip install -r requirements.txt --user
-    #     pip freeze
     - name: Run example
-      with:
-        args: python example.py
+      run: python example.py
