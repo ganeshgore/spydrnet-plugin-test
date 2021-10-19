@@ -1,0 +1,25 @@
+on: push
+name: on push
+jobs:
+  SpyDrNet_Plugin:
+    name: Test run on CI
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version:
+          - "3.8"
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    # - name: install requirements
+    #   run: |
+    #     python --version
+    #     pip install --upgrade pip
+    #     pip install -r requirements.txt --user
+    #     pip freeze
+    - name: Run example
+      with:
+        args: python example.py
